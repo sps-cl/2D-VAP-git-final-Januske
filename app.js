@@ -13,8 +13,14 @@ function addTask(){
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         li.id = id;
+        let button = document.createElement("button");
+        button.innerText = "Remove";
+        button.onclick =  function(){ removeTask(li.id)};
         li.addEventListener("click", function(){ toggleTask(li.id); })
+        
+        li.appendChild(button);
         listContainer.appendChild(li);
+
     }
     inputBox.value = "";
 }
@@ -27,4 +33,11 @@ function toggleTask(id) {
     } else {
         task.classList.add("checked");
     }
+
+
+}
+
+function removeTask(id){
+    let task = document.getElementById(id);
+    listContainer.removeChild(task);
 }
